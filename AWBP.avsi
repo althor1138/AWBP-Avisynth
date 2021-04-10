@@ -1,7 +1,7 @@
 function AWBP(clip input\
 , int "B1X", int "B1Y", int "B2X", int "B2Y", int "B3X", int "B3Y", int "B4X", int "B4Y"\
 , int "W1X", int "W1Y", int "W2X", int "W2Y", int "W3X", int "W3Y", int "W4X", int "W4Y"\
-, int "bsr", int "wsr", int "outlow", int "outhigh", float "gamma", bool "whitebalance")
+, int "bsr", int "wsr", int "outlow", int "outhigh", float "gamma", bool "whitebalance", bool "show")
 {
 
 Scriptclip(input,"""\
@@ -28,6 +28,20 @@ low=Max(low1,low2,low3,low4)
 high=Min(high1,high2,high3,high4)
 
 levels(last,low,gamma,high,outlow,outhigh,false,true)
-whitebalance ? coloryuv(autowhite=true) : last
-""",args="input,b1x,b1y,b2x,b2y,b3x,b3y,b4x,b4y,w1x,w1y,w2x,w2y,w3x,w3y,w4x,w4y,bsr,wsr,outlow,outhigh,gamma,whitebalance")
+whitebalance ? coloryuv(autowhite=true) : NOP
+whitebox=show ? white1.blankclip(color=$00FFFF) : NOP
+blackbox=show ? black1.blankclip(color=$00FFFF) : NOP
+WW=show ? whitebox.width()/1.5 : NOP
+BW=show ? blackbox.width()/1.5 : NOP
+show ? overlay(last,blackbox.subtitle("B1",align=2,size=BW),b1x-bsr,b1y-bsr,opacity=0.5) : NOP
+show ? overlay(last,blackbox.subtitle("B2",align=2,size=BW),b2x-bsr,b2y-bsr,opacity=0.5) : NOP
+show ? overlay(last,blackbox.subtitle("B3",align=2,size=BW),b3x-bsr,b3y-bsr,opacity=0.5) : NOP
+show ? overlay(last,blackbox.subtitle("B4",align=2,size=BW),b4x-bsr,b4y-bsr,opacity=0.5) : NOP
+show ? overlay(last,whitebox.subtitle("W1",align=2,size=WW),w1x-wsr,w1y-wsr,opacity=0.5) : NOP
+show ? overlay(last,whitebox.subtitle("W2",align=2,size=WW),w2x-wsr,w2y-wsr,opacity=0.5) : NOP
+show ? overlay(last,whitebox.subtitle("W2",align=2,size=WW),w2x-wsr,w2y-wsr,opacity=0.5) : NOP
+show ? overlay(last,whitebox.subtitle("W3",align=2,size=WW),w3x-wsr,w3y-wsr,opacity=0.5) : NOP
+show ? overlay(last,whitebox.subtitle("W4",align=2,size=WW),w4x-wsr,w4y-wsr,opacity=0.5) : NOP
+return last
+""",args="input,b1x,b1y,b2x,b2y,b3x,b3y,b4x,b4y,w1x,w1y,w2x,w2y,w3x,w3y,w4x,w4y,bsr,wsr,outlow,outhigh,gamma,whitebalance,show")
 }
