@@ -11,9 +11,15 @@ Use respective search radius parameter to set the size around the coordinates.
 4 black points and 4 white points are required.
 
 BSR=Black point search radius. Number of pixels to search around chosen coordinates.
+
 WSR=White point search radius. Number of pixels to search around chosen coordinates.
+
 outlow=output level for lowest pixel. Bit-depth equivalent of 16 for YUV content, for example.
+
 outhigh=output level for high pixel Bit-depth equivalent of 235 for YUV content, for example.
+
 gamma=floating point number gamma adjustment. Set at 1.0 for no change in gamma.
+
 whitebalance=optional white balancing. YUV content only.
+
 show=Show an overlay of the position and size of white/black points.
