@@ -6,7 +6,7 @@ For the white areas it will scan the areas given by the coordinates and return t
 function AWBP(clip input\
 , int "B1X", int "B1Y", int "B2X", int "B2Y", int "B3X", int "B3Y", int "B4X", int "B4Y"\
 , int "W1X", int "W1Y", int "W2X", int "W2Y", int "W3X", int "W3Y", int "W4X", int "W4Y"\
-, int "bsr", int "wsr", int "outlow", int "outhigh", float "gamma", bool "whitebalance")
+, int "bsr", int "wsr", int "outlow", int "outhigh", float "gamma", bool "whitebalance", bool "show")
 
 B1X-W4Y= x,y coordinates for area selection.
 Use respective search radius parameter to set the size around the coordinates.
