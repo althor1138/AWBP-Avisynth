@@ -1,5 +1,7 @@
 # AWBP-Avisynth
-Automatic White/Black Point Picker.
+A Per-frame Automatic White/Black Point Picker. Calculate new values for every frame.
+It will scan the black areas given by the coordinates and return the lowest value for each area. It then compares the 4 values and returns the highest value.
+For the white areas is will scan the areas given by the coordinates and return the highest pixel value for each area. It then compares the 4 values and returns the lowest value.
 
 function AWBP(clip input\
 , int "B1X", int "B1Y", int "B2X", int "B2Y", int "B3X", int "B3Y", int "B4X", int "B4Y"\
